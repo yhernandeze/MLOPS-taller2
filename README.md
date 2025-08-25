@@ -1,6 +1,6 @@
-# Taller: Predicción de Especies de Pingüinos con FastAPI y Docker
+# Taller: Predicción de Especies de Pingüinos y Dockers (Jupiter y FastAPI)
 
-En este taller se desarrolló un proyecto completo que abarca desde la obtención y procesamiento de datos hasta la creación y despliegue de una API para realizar inferencias con modelos de machine learning entrenados. Se usaron varias tecnologías y buenas prácticas para lograr un producto funcional, modular y escalable.
+Este proyecto expone una API FastAPI que clasifica especies de pingüinos (Palmer Penguins) y un entorno de JupyterLab para entrenar y guardar nuevos modelos. Ambos servicios comparten un volumen de modelos; así, cuando el notebook guarda un modelo nuevo, la API puede recargar esos artefactos sin reiniciar el contenedor
 
 ## Arquitectura del Proyecto
 
