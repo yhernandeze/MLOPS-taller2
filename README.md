@@ -2,7 +2,7 @@
 
 Este proyecto implementa una API desarrollada con FastAPI para clasificar especies de pingüinos (Palmer Penguins), junto con un entorno de JupyterLab que permite entrenar y guardar nuevos modelos. Ambos servicios comparten un volumen de almacenamiento, lo que permite que los modelos generados desde Jupyter se guarden en una ubicación común. Gracias a esto, la API puede recargar automáticamente los artefactos actualizados sin necesidad de reiniciar su contenedor.
 
-## Estructura de Archivos
+### Estructura de Archivos
 ![Estructura de archivos del proyecto](./images/arquitectura.png)
 
 ### Arquitectura del proyecto
@@ -22,7 +22,7 @@ JupyterLab: entrena y guarda logistic_regression_model.pkl, scaler.pkl, model_in
 
 API (FastAPI): sirve predicciones; puede recargar los artefactos con POST /model/reload sin reiniciar.
 
-## Estructura Relevante
+### Estructura Relevante
 
 ```graphql
 .
@@ -41,7 +41,7 @@ API (FastAPI): sirve predicciones; puede recargar los artefactos con POST /model
 └── docker-compose.yml          # Orquestación: servicios + volumen compartido de modelos
 ```
 
-## Endpoints principales
+### Endpoints principales
 
 GET / – info básica del servicio
 
@@ -60,7 +60,7 @@ POST /model/reload – recarga artefactos desde MODELS_DIR (volumen compartido)
 Swagger UI: http://localhost:8989/docs
 ReDoc: http://localhost:8989/redoc
 
-## Variables de entorno relevantes
+### Variables de entorno relevantes
 
 MODELS_DIR
 
@@ -70,7 +70,7 @@ En Jupyter: /workspace/models
 
 Ambos apuntan al mismo volumen (model_store) para compartir artefactos.
 
-## Requisitos previos
+### Requisitos previos
 
 Docker Desktop en Windows con WSL2 backend habilitado.
 
@@ -82,7 +82,7 @@ Puertos libres:
 
 8888 para Jupyter
 
-## Puesta en marcha
+### Puesta en marcha
 
 Desde la raíz del proyecto (donde está docker-compose.yml):
 
@@ -100,7 +100,7 @@ Abre Jupyter: http://localhost:8888
 
 Abre la API: http://localhost:8989/docs
 
-## Flujos de prueba
+### Flujos de prueba
 1) Entrenar un modelo desde Jupyter
 
 En un notebook de Jupyter (p. ej. notebooks/train_penguins.ipynb), ejecuta:
@@ -125,7 +125,7 @@ scaler.pkl
 model_info.json
 ```
 
-## Desarrollo con VS code (WSL)
+### Desarrollo con VS code (WSL)
 
 Abre la carpeta del proyecto en VS Code (WSL).
 
@@ -139,7 +139,7 @@ docker compose build api && docker compose restart api
 docker compose build jupyter && docker compose restart jupyter
 
 ```
-## Troubleshooting
+### Troubleshooting
 
 Jupyter se cierra con “Running as root is not recommended”: ya está mitigado con --allow-root en Compose.
 
@@ -152,3 +152,5 @@ kill -9 <PID>
 /docs no carga: usa /docs (no /doc).
 
 /model/reload no aparece: asegúrate de haber guardado cambios de api/main.py y que Uvicorn hizo reload (o reinicia el servicio API).
+
+### Troubleshooting
