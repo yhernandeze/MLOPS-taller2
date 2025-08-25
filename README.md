@@ -8,7 +8,7 @@ En este taller se desarrolló un proyecto completo que abarca desde la obtenció
 
 La estructura del proyecto se organizó de manera modular para facilitar el mantenimiento y escalabilidad:
 
-![Estructura de archivos del proyecto](./imagen/estructura-archivos.PNG)
+![Estructura de archivos del proyecto](./images/arquitectura.png)
 
 ```
 app/
