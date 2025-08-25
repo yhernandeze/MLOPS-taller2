@@ -160,7 +160,14 @@ kill -9 <PID>
 
 ### Despliegue de la solución
 
+Verificación del funcionamiento: 
 ![Estructura de archivos del proyecto](./images/api.png)
+
+
+Logs de funcionamiento API:
 ![Estructura de archivos del proyecto](./images/logs.jpeg)
 ![Estructura de archivos del proyecto](./images/logs2.png)
+
+Validación de los Endpoints de la API:
+![Estructura de archivos del proyecto](./images/API__Nivel0_Taller2.pdf)
 
