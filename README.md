@@ -60,6 +60,9 @@ POST /model/reload – recarga artefactos desde MODELS_DIR (volumen compartido)
 Swagger UI: http://localhost:8989/docs
 ReDoc: http://localhost:8989/redoc
 
+### Funciones principales de los Endpoints
+"endpoints": {    "/predict/simple": "Predicción con entrada user-friendly",    "/predict/complete": "Predicción con one-hot encoding explícito",    "/health": "Estado detallado del servicio",    "/model/info": "Información sobre el modelo activo",    "/model/reload": "Recargar modelo activo",    "/models/list": "Listar todos los modelos disponibles",    "/models/activate/{model_name}": "Activar un modelo específico",    "/models/comparison": "Comparación detallada entre modelos",    "/models/train": "Entrenar múltiples modelos",    "/models/{model_name}": "Eliminar un modelo específico",    "/docs": "Documentación interactiva (Swagger UI)",    "/redoc": "Documentación alternativa (ReDoc)"
+
 ### Variables de entorno relevantes
 
 MODELS_DIR
@@ -103,10 +106,7 @@ Abre la API: http://localhost:8989/docs
 ### Flujos de prueba
 1) Entrenar un modelo desde Jupyter
 
-En un notebook de Jupyter (p. ej. notebooks/train_penguins.ipynb), ejecuta:
-
-```python
-!python train_model.py
+!python train_model.py --> !python train_multi_models.py
 ```
 Esto:
 
