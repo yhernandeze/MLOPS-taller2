@@ -153,35 +153,5 @@ kill -9 <PID>
 
 /model/reload no aparece: asegúrate de haber guardado cambios de api/main.py y que Uvicorn hizo reload (o reinicia el servicio API).
 
-### 1. Despliegue del Modelo de Machine Learning 
+### Despliegue de la solución
 
-Módulo de Procesamiento de Datos (data_processing.py) Este módulo encapsula toda la lógica relacionada con la carga, limpieza y transformación de datos del dataset Palmer Penguins. 
-• Carga de datos: Lectura y validación inicial del dataset
-• Limpieza de datos: Manejo de valores faltantes y detección de outliers
-• Transformación de datos: Normalización, encoding de variables
-categóricas y feature engineering
-• Validación de esquemas: Verificación de la integridad y consistencia de los
-datos
-
-Módulo de Entrenamiento del Modelo (model_training.py) Este módulo encapsula toda la lógica relacionada con el entrenamiento, validación
-y evaluación del modelo de machine learning. Sus funcionalidades principales son:
-• Configuración de algoritmos: Definición e inicialización de modelos de
-clasificación
-• Entrenamiento: Proceso de ajuste de parámetros usando datos de
-entrenamiento
-• Validación cruzada: Evaluación robusta del rendimiento del modelo
-
-Módulo de Gestión de Modelos (model_manager.py) Este módulo actúa como el "registry" central de modelos, siendo responsable de la
-gestión, persistencia y carga de los artefactos de machine learning. Sus capacidades incluyen:
-• Serialización y deserialización: Guardado y carga segura de modelos
-entrenados
-• Versionado de modelos: Control de versiones para diferentes iteraciones
-del modelo
-• Gestión de metadata: Almacenamiento de información sobre performance,
-fecha de entrenamiento y configuración
-• Carga dinámica: Recuperación eficiente de modelos para inferencia en
-tiempo real.
-
-### 2. API Rest
-
-La API está construida sobre FastAPI, un framework moderno de alto rendimiento que proporciona validación automática, documentación OpenAPI y tipos asincrónicos nativos. La arquitectura se compone de dos módulos principales:
