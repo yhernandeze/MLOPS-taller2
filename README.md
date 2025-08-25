@@ -115,15 +115,20 @@ Procesa datos → entrena → guarda artefactos en /workspace/models (volumen co
 Verifica artefactos:
 ```bash
 !ls -lh /workspace/models
+ 
+```Deberias ver: 
+ 
+-rwxr-xr-x 1 root root    7 Aug 25 03:56 active_model.txt
+-rwxr-xr-x 1 root root 745K Aug 25 03:42 gradient_boosting_model.pkl
+-rwxr-xr-x 1 root root 1.2K Aug 25 03:56 logistic_regression_model.pkl
+-rwxr-xr-x 1 root root 3.3K Aug 25 01:19 model_info.json
+-rwxr-xr-x 1 root root 7.7K Aug 25 03:56 models_comparison.json
+-rwxr-xr-x 1 root root  704 Aug 25 03:56 models_registry.json
+-rwxr-xr-x 1 root root 157K Aug 25 03:42 neural_network_model.pkl
+-rwxr-xr-x 1 root root 227K Aug 25 03:56 random_forest_model.pkl
+-rwxr-xr-x 1 root root 1.3K Aug 25 03:56 scaler.pkl
+-rwxr-xr-x 1 root root 9.3K Aug 25 03:56 svm_rbf_model.pkl
 
-```
-Deberías ver:
-
-```pgsql
-logistic_regression_model.pkl
-scaler.pkl
-model_info.json
-```
 
 ### Desarrollo con VS code (WSL)
 
