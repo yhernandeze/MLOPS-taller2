@@ -162,5 +162,5 @@ kill -9 <PID>
 
 ![Estructura de archivos del proyecto](./images/api.png)
 ![Estructura de archivos del proyecto](./images/logs.jpeg)
-![Estructura de archivos del proyecto](./images/imagen (4).png)
+![Estructura de archivos del proyecto](./images/logs2.png)
 
