@@ -160,6 +160,5 @@ kill -9 <PID>
 
 ### Despliegue de la solución
 
-### API
-![Estructura de archivos del proyecto](./images/arquitectura.png)
+![Estructura de archivos del proyecto](./images/api.png)
 
