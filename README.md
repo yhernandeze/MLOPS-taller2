@@ -161,5 +161,5 @@ kill -9 <PID>
 ### Despliegue de la solución
 
 ![Estructura de archivos del proyecto](./images/api.png)
-![Estructura de archivos del proyecto](./images/logs.png)
+![Estructura de archivos del proyecto](./images/logs.jpeg)
 
