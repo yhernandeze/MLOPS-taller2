@@ -1,0 +1,93 @@
+version: "3.9"
+services:
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: Minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"   # MinIO API port
+      - "9001:9001"   # MinIO web console port
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=supersecret
+    volumes:
+      - minio_data:/data
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: MySQL
+    ports:
+      - "3306:3306"   # MySQL port
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_DATABASE=mlflow_db
+      - MYSQL_USER=mlflow_user
+      - MYSQL_PASSWORD=mlflow_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  mlflow:
+    build:
+      context: ./mlflow
+      dockerfile: Dockerfile
+    container_name: MLflow
+    depends_on:
+      - minio
+      - mysql
+    ports:
+      - "5000:5000"   # MLflow UI/API port
+    environment:
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=supersecret
+    command: >
+      mlflow server
+      --host 0.0.0.0 --port 5000
+      --backend-store-uri mysql+pymysql://mlflow_user:mlflow_pass@mysql/mlflow_db
+      --default-artifact-root s3://mlflows3/artifacts
+      --serve-artifacts
+    volumes:
+      - ./mlflowdb:/app/mlflowdb
+    restart: unless-stopped
+
+  jupyter:
+    image: jupyter/scipy-notebook:latest
+    container_name: JupyterLab
+    depends_on:
+      - mlflow
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=supersecret
+      - RESTARTABLE=yes
+      - JUPYTER_TOKEN=valentasecret
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./api
+    container_name: PenguinsAPI
+    depends_on:
+      - mlflow
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - MODEL_URI=models:/PenguinClassifier/Production
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=supersecret
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+volumes:
+  minio_data:
+  mysql_data:
+
