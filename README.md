@@ -1,6 +1,4 @@
-# Taller — Desarrollo en Contenedores (API + Jupyter + uv + Compose)
 
-Este proyecto implementa una API desarrollada con FastAPI para clasificar especies de pingüinos (Palmer Penguins), junto con un entorno de JupyterLab que permite entrenar y guardar nuevos modelos. Ambos servicios comparten un volumen de almacenamiento, lo que permite que los modelos generados desde Jupyter se guarden en una ubicación común. Gracias a esto, la API puede recargar automáticamente los artefactos actualizados sin necesidad de reiniciar su contenedor.
 
 ### Estructura de Archivos
 ![Estructura de archivos del proyecto](./images/arquitectura.png)
